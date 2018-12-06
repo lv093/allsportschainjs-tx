@@ -17,7 +17,7 @@ const N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46
  *   to: '0x0000000000000000000000000000000000000000',
  *   value: '0x00',
  *   type: '0x00',
- *   remark: '0x00',
+ *   extra: '0x00',
  *   data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057',
  *   v: '0x1c',
  *   r: '0x5e1d3a76fbf824220eafc8c79ad578ad2b67d01b0c2425eb1f1347e8f50882ab',
@@ -39,7 +39,7 @@ const N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46
  * @param {Buffer} data.to to the to address
  * @param {Buffer} data.value the amount of ether sent
  * @param {Buffer} data.type the type of transaction sent
- * @param {Buffer} data.remark the remark of transaction sent
+ * @param {Buffer} data.extra the extra of transaction sent
  * @param {Buffer} data.data this will contain the data of the message or the init of a contract
  * @param {Buffer} data.v EC recovery ID
  * @param {Buffer} data.r EC signature parameter
@@ -83,10 +83,9 @@ class Transaction {
       allowLess: true,
       default: new Buffer([0x00])
     }, {
-      name: 'remark',
-      length: 8,
+      name: 'extra',
       allowLess: true,
-      default: new Buffer([0x00])
+      default: new Buffer([])
     }, {
       name: 'data',
       alias: 'input',
